@@ -15,8 +15,8 @@
   </v-container>
 </template>
 <script>
-import AdBox from '~/components/AdBox.vue'
-import ReactionButtons from '~/components/ReactionButtons.vue'
+import AdBox from '@/components/AdBox'
+import ReactionButtons from '@/components/ReactionButtons'
 export default {
   name: 'IndexPage',
   components: {

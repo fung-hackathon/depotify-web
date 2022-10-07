@@ -1,18 +1,26 @@
 <template>
-  <dev class="container">
-    <v-btn
-      v-for="emoji in emojis"
-      :key="emoji.emoji"
-      :disabled="lock && !emoji.state"
-      elevation="1"
-      rounded
-      x-large
-      class="emoji"
-      @click="onButtonClicked(emoji)"
-    >
-      {{ emoji.emoji }}
-    </v-btn>
-  </dev>
+  <div>
+    <p>
+      {{ status }}
+    </p>
+    <p v-if="error != null">
+      {{ error }}
+    </p>
+    <div class="container">
+      <v-btn
+        v-for="emoji in emojis"
+        :key="emoji.emoji"
+        :disabled="lock && !emoji.state"
+        elevation="1"
+        rounded
+        x-large
+        class="emoji"
+        @click="onButtonClicked(emoji)"
+      >
+        {{ emoji.emoji }}
+      </v-btn>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -21,38 +29,55 @@ export default {
       emojis: [
         {
           emoji: '❤',
-          state: false
+          state: false,
+          name: 'heart'
         },
         {
           emoji: '😊',
-          state: false
+          state: false,
+          name: 'blush'
         },
         {
           emoji: '🥰',
-          state: false
+          state: false,
+          name: 'smiling_face_with_3_hearts'
         },
         {
           emoji: '😋',
-          state: false
+          state: false,
+          name: 'yum'
         },
         {
           emoji: '🥳',
-          state: false
+          state: false,
+          name: 'partying_face'
         },
         {
           emoji: '💯',
-          state: false
+          state: false,
+          name: '100'
         }
       ],
-      lock: false
+      lock: false,
+      status: '感謝を絵文字で伝えよう！',
+      error: null
     }
   },
   methods: {
     onButtonClicked (emoji) {
-      this.lock = true
-      emoji.state = true
       if (!this.lock) {
         // apiたたく
+        this.$axios.post('/api/emotion', {
+          userid: this.$route.query.userid,
+          emotion: [emoji.name]
+        }).then((res) => {
+          this.status = '送信に成功しました'
+          emoji.state = true
+          this.lock = true
+        }).catch((err) => {
+          this.status = '送信に失敗しました'
+          this.error = err
+        })
       }
     }
   }
@@ -71,5 +96,9 @@ export default {
   flex-wrap: wrap;
   margin: 0;
   padding: 1em 0;
+}
+p {
+  font-size: 1.5em;
+  padding:0 0.5em;
 }
 </style>

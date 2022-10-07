@@ -67,7 +67,7 @@ export default {
     onButtonClicked (emoji) {
       if (!this.lock) {
         // apiたたく
-        this.$axios.post('/api/emotion', {
+        this.$axios.post('/emotion', {
           userid: this.$route.query.userid,
           emotion: [emoji.name]
         }).then((res) => {

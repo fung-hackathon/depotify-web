@@ -53,13 +53,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    proxy: true
-  },
-  proxy: {
-    "/api": {
-      target: 'https://depotify.onrender.com',
-      pathRewrite: { '^/api/': '/' }
-    }
+    baseURL: "https://depotify.onrender.com"
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

@@ -57,7 +57,7 @@ export default {
   },
   proxy: {
     "/api": {
-      target: 'http://localhost:1323',
+      target: 'https://depotify.onrender.com',
       pathRewrite: { '^/api/': '/' }
     }
   },

@@ -84,7 +84,6 @@ export default {
 }
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 .emoji {
   font-family: 'Noto Color Emoji', sans-serif;
   font-size: 2em;
@@ -100,5 +99,11 @@ export default {
 p {
   font-size: 1.5em;
   padding:0 0.5em;
+}
+</style>
+<style>
+.v-btn__content {
+  height: 2em;
+  font-size: 2em;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <header>
-      <h1>funHacks</h1>
+      <img src="/logo.svg" />
     </header>
     <Nuxt />
   </div>
@@ -15,15 +15,16 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 #wrapper{
   height: 100vh;
 }
-h1 {
+img {
+  padding: 0.5em;
   display: block;
   width: 100%;
-  font-size: 2.5em;
   text-align: center;
+  width: 100%;
 }
 header {
   margin: 0 0.5em;

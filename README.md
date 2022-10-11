@@ -1,4 +1,4 @@
-# funhackathon2022-web
+# depotify-web
 
 ## Build Setup
 
